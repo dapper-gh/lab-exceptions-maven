@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.main;
 
+import edu.grinnell.csc207.util.DivideByZeroException;
 import edu.grinnell.csc207.util.IOUtils;
 import edu.grinnell.csc207.util.Quadratic;
 
@@ -37,6 +38,9 @@ public class QR {
     double smallerRoot;
     try {
       smallerRoot = quad.smallerRoot();
+    } catch (DivideByZeroException dbze) {
+      pen.println("Cannot compute a result because the coefficient of the quadratic term is 0.");
+      return;
     } catch (Exception e) {
       pen.printf("Sorry, I could not compute a root for %s.\n",
         quad.toString());
