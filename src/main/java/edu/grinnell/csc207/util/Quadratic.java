@@ -94,9 +94,10 @@ public class Quadratic {
    * @return the smaller of the two roots (or the only root, if there
    *   is only one).
    */
-  public double smallerRoot() {
+  public double smallerRoot() throws Exception {
     double detSqrt = Math.sqrt(this.b * this.b - 4 * this.a * this.c);
     return (-this.b - detSqrt) / (2 * this.a);
+    
   } // smallerRoot
 
   /**
