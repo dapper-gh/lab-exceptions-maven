@@ -24,7 +24,7 @@ public class QR {
    * @throws Exception
    *   If something goes wrong with the I/O or elsewhere.
    */
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     PrintWriter pen = new PrintWriter(System.out, true);
     BufferedReader eyes = new BufferedReader(new InputStreamReader(System.in));
 
@@ -34,14 +34,25 @@ public class QR {
     int c = IOUtils.readInt(pen, eyes, "Please enter c (the constant)                       : ");
 
     Quadratic quad = new Quadratic(a, b, c);
-    double smallerRoot = quad.smallerRoot();
+    double smallerRoot;
+    try {
+      smallerRoot = quad.smallerRoot();
+    } catch (Exception e) {
+      pen.printf("Sorry, I could not compute a root for %s.\n",
+        quad.toString());
+      return;
+    } // try-catch
 
-    pen.printf("The smaller root of %dx^2 + %dx + %d is %f.\n\n", a, b, c, smallerRoot);
+    pen.printf("The smaller root of %s is %f.\n\n", quad.toString(), smallerRoot);
 
-    pen.printf("Experimentally, %d*%f^2 + %d*%f + %d = %f.\n", a, smallerRoot, b, smallerRoot, c, quad.evaluate(smallerRoot));
+    pen.printf("Experimentally, %s = %f.\n", quad.toString(smallerRoot), quad.evaluate(smallerRoot));
 
-    eyes.close();
-    pen.close();
+    try {
+      eyes.close();
+      pen.close();
+    } catch (Exception e) {
+
+    } // try-catch
   } // main(String[])
 
 } // QR
