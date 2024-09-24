@@ -95,9 +95,17 @@ public class Quadratic {
    *   is only one).
    */
   public double smallerRoot() throws Exception {
-    double detSqrt = Math.sqrt(this.b * this.b - 4 * this.a * this.c);
-    return (-this.b - detSqrt) / (2 * this.a);
+    if (a == 0) {
+      throw new Exception("Cannot compute quadratic roots of linear functions.");
+    } // if (a == 0)
+
+    double det = this.b * this.b - 4 * this.a * this.c;
+    if (det < 0) {
+      throw new Exception("Cannot compute imaginary quadratic roots.");
+    } // if (det < 0)
     
+    return (-this.b - Math.sqrt(det)) / (2 * this.a);
+
   } // smallerRoot
 
   /**
