@@ -96,8 +96,10 @@ public class Quadratic {
    */
   public double smallerRoot() throws Exception {
     if (a == 0) {
-      throw new Exception("Cannot compute quadratic roots of linear functions.");
+      throw new DivideByZeroException("Cannot divide by 0.");
     } // if (a == 0)
+
+   
 
     double det = this.b * this.b - 4 * this.a * this.c;
     if (det < 0) {
