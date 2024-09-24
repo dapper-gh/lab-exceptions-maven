@@ -35,4 +35,18 @@ public class TestQuadratic {
         "The smaller root of x^2 - 3x is 0");
   } // testRootsNoC()
 
+  /**
+   * Test full quadratic expressions.
+   */
+  @Test
+  public void testRootsAllCoeff() {
+    Quadratic q2and5 = new Quadratic(1, 3, -10);
+    assertEquals(2, q2and5.largerRoot(), "(x-2)(x+5) larger root is 2");
+    assertEquals(-5, q2and5.smallerRoot(), "(x-2)(x+5) smaller root is -5");
+
+    Quadratic qFractional = new Quadratic(6, 1, -12);
+    assertEquals(-3/2, qFractional.smallerRoot(), "qFractional smallerRoot is -3/2");
+    assertEquals(4/3, qFractional.largerRoot(), "qFractional largerRoot is 4/3");
+  }
+
 } // class TestQuadratic
